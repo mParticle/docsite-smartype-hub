@@ -1,0 +1,167 @@
+{
+    "version": 1,
+    "data_plan_id": "docsite",
+    "activated_environment": "none",
+    "created_on": "2020-11-24T18:25:07.33",
+    "created_by": "sdozor@mparticle.com",
+    "last_modified_on": "2021-01-19T18:14:59.743",
+    "last_modified_by": "alexs@mparticle.com",
+    "version_document": {
+        "data_points": [
+            {
+                "description": "A Page View Event",
+                "match": {
+                    "type": "screen_view",
+                    "criteria": {
+                        "screen_name": "Viewed Page"
+                    }
+                },
+                "validator": {
+                    "type": "json_schema",
+                    "definition": {
+                        "properties": {
+                            "data": {
+                                "additionalProperties": true,
+                                "properties": {
+                                    "custom_attributes": {
+                                        "additionalProperties": false,
+                                        "description": "Page View Custom Attributes",
+                                        "properties": {
+                                            "document_path": {
+                                                "description": "the path excluding the domain eg \"/connections/overview\"",
+                                                "type": "string"
+                                            },
+                                            "document_title": {
+                                                "description": "title of the document eg \"Data Connections\"",
+                                                "type": "string"
+                                            },
+                                            "document_referrer": {
+                                                "description": "referring url eg https://google.com?search=mParticle+connections",
+                                                "type": "string"
+                                            },
+                                            "document_location": {
+                                                "description": "full page url eg https://docs.mparticle.com/connections/overview",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "document_path",
+                                            "document_title",
+                                            "document_referrer",
+                                            "document_location"
+                                        ],
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "custom_attributes"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "description": "Custom Search Event",
+                "match": {
+                    "type": "custom_event",
+                    "criteria": {
+                        "event_name": "Search",
+                        "custom_event_type": "search"
+                    }
+                },
+                "validator": {
+                    "type": "json_schema",
+                    "definition": {
+                        "properties": {
+                            "data": {
+                                "additionalProperties": true,
+                                "properties": {
+                                    "custom_attributes": {
+                                        "additionalProperties": false,
+                                        "description": "Custom Search Attributes",
+                                        "properties": {
+                                            "result_count": {
+                                                "description": "",
+                                                "type": "number"
+                                            },
+                                            "search_term": {
+                                                "description": "",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "result_count",
+                                            "search_term"
+                                        ],
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "custom_attributes"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "description": "Custom Navigation Event",
+                "match": {
+                    "type": "custom_event",
+                    "criteria": {
+                        "event_name": "Menu Click",
+                        "custom_event_type": "navigation"
+                    }
+                },
+                "validator": {
+                    "type": "json_schema",
+                    "definition": {
+                        "properties": {
+                            "data": {
+                                "additionalProperties": true,
+                                "properties": {
+                                    "custom_attributes": {
+                                        "additionalProperties": false,
+                                        "description": "Document attributes as custom attributes",
+                                        "properties": {
+                                            "document_title": {
+                                                "description": "title of the document eg \"Data Connections\"",
+                                                "type": "string"
+                                            },
+                                            "document_path": {
+                                                "description": "the path excluding the domain eg \"/connections/overview\"",
+                                                "type": "string"
+                                            },
+                                            "document_location": {
+                                                "description": "full url",
+                                                "type": "string"
+                                            },
+                                            "menu_label": {
+                                                "description": "the section label in the table of contents",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "document_title",
+                                            "document_path",
+                                            "document_location",
+                                            "menu_label"
+                                        ],
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "custom_attributes"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}
